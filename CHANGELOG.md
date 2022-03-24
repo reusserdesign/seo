@@ -1,3 +1,31 @@
+## 3.7.4 - 2021-06-14
+### Fixed
+- Fix error when trying to fetch social image (Fixes #358, via @MDXDave)
+
+## 3.7.3 - 2021-05-28
+### Changes
+- Up Craft CMS requirement to `^3.5` (Fixes #341)
+
+### Fixed
+- Fix JS error on sitemap admin (Fixes #325)
+
+## 3.7.2 - 2021-05-25
+### Changed
+- SEO will now add `noindex` to all environments except production, regardless of `devMode` (via @nstCactus)
+
+### Fixed
+- Fix sitemap error if some sites are disabled
+- Fix an exception when an entry type has multiple SEO fields (via @nstCactus)
+- Fix custom SEO objects always using fallback image (via @jmauzyk)
+
+## 3.7.1 - 2021-04-22
+### Fixed
+- Fix migration issue when upgrading to 3.7 on MySQL
+
+## 3.7.0 - 2021-04-22
+### Added
+- Added support for product types in sitemap (via @boboldehampsink)
+
 ## 3.6.7 - 2020-11-30
 ### Changed
 - Set Twitter image transform to a 2:1 ratio (via @icreatestuff)

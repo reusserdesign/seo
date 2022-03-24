@@ -40,7 +40,7 @@ When moving from your old, awful site to your shiny new Craft one, you’ll want
 
 SEO for Crafts redirect manager lets you easily add 301 & 302 redirects, with full .htaccess style regex support!
 
-Redirects support [PCRE regex syntax](http://php.net/manual/en/reference.pcre.pattern.syntax.php). By default, all `/` and `?` not inside parenthesis are escaped. To prevent any escaping include the opening and closing forward slashes and flags: `/^blog$/i`. All redirects are given the insensitive flag, unless overwritten. 
+Redirects support [PCRE regex syntax](http://php.net/manual/en/reference.pcre.pattern.syntax.php). By default, all `/` and `?` not inside parenthesis are escaped. To prevent any escaping include the opening and closing forward slashes and flags: `/^blog$/i`. All redirects are given the insensitive flag, unless overwritten.
 
 **Redirect Regex Example**  
 To redirect from `blog/2016/my-post` to `news/my-post` you would add the following redirect:
@@ -66,6 +66,12 @@ Clone this repo into `craft/plugins/seo`.
 
 Before using the SEO field type, you’ll need to ensure all the settings are correct. You can find the settings under the SEO plugin menu in the sidebar, or via the plugin menu.
 
+### Environment Setup
+
+Ensure that your Production environment’s name is `production` (going with Craft’s convention). All other environments will get `X-Robots-Tag: none, noimageindex` headers added to every web response, to prevent search engines from indexing duplicate content.
+
+Environment names are typically defined by an `ENVIRONMENT` environment variable.
+
 ### Fieldtype Usage
 
 Replace your `title` tag, and any other SEO related meta tags with `{% hook "seo" %}`. That's it!
@@ -78,9 +84,10 @@ In some cases, you will not have access to an SEO field, but will want to set th
 
 ```twig
 craft.seo.custom(
-    'The Page Title', 
+    'The Page Title',
     'The page description',
-    
+    null,
+
     // Social media - Any missing fields (excluding images) will be populated by the values above
     {
         twitter: { image: myImageField.first() },
